@@ -1,0 +1,1 @@
+This repository for my first python project, a basic checkbook application. The application will allow the user to perform various functions such as debits and withdrawels within the command line.
