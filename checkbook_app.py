@@ -1,5 +1,4 @@
 
-
 #global variables - putting at beginning to ensure helper functions and print statements run
 
 
@@ -40,9 +39,9 @@ def convert_item_to_float(some_list):
         new_list.append(float(item))
     return new_list
 
-def sum_of_all_transactions()
-with open("transactions.txt", "r") as f:
-    balances = f.readlines()
+def sum_of_all_transactions():
+    with open("transactions.txt", "r") as f:
+        balances = f.readlines()
     return sum(convert_item_to_float((remove_new_line_characters(balances))))
 
 def view_account_balance(some_list):
@@ -57,11 +56,12 @@ def add_a_withdrawel_to_file(amount):
         f.write(amount)
 
 def convert_withdrawel_input_to_negative(amount):
-    return amount * -1
+    return -(float(amount))
 
 while True:
     user_input_for_menu_selection = input("How would you like to proceed?")
     user_input_for_menu_selection = int(user_input_for_menu_selection)
+    print("\n")
     if user_input_for_menu_selection == 1:
         print("Your current balance is $", str(sum_of_all_transactions()))
         print("\n")
@@ -74,9 +74,9 @@ while True:
         print("Your new blance is $", str(sum_of_all_transactions()))
     elif user_input_for_menu_selection == 3:
         withdraw_amount = input("How much would you like to withdraw?")
-        withdraw_amount = convert_withdrawel_input_to_negative(float(withdraw_amount))
-        add_a_withdrawel_to_file(str(withdraw_amount))
-        print("Your new blance is $", str(sum_of_all_transactions()))
+        withdraw_amount = convert_withdrawel_input_to_negative(withdraw_amount)
+        add_a_withdrawel_to_file(str(withdraw_amount) + "\n")
+        print("Your new balance is $", str(sum_of_all_transactions()))
     else:
         print("\n")
         print(goodbye)
