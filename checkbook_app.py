@@ -60,23 +60,36 @@ def convert_withdrawel_input_to_negative(amount):
 
 while True:
     user_input_for_menu_selection = input("How would you like to proceed?")
-    user_input_for_menu_selection = int(user_input_for_menu_selection)
     print("\n")
+    check_if_a_valid_input(user_input_for_menu_selection)
+    user_input_for_menu_selection = int(user_input_for_menu_selection)
+    
     if user_input_for_menu_selection == 1:
         print("Your current balance is $", str(sum_of_all_transactions()))
         print("\n")
         print(menu_header)
         print(menu_options)
         print("\n")
+    
     elif user_input_for_menu_selection == 2:
         deposit_amount = input("How much would you like to deposit?")
-        add_a_deposit_to_file(deposit_amount + "\n")
-        print("Your new blance is $", str(sum_of_all_transactions()))
+        if deposit_amount.isnumeric():
+            add_a_deposit_to_file(deposit_amount + "\n")
+            print("\n")
+            print("Your new blance is $", str(sum_of_all_transactions()))
+        else:
+            print("Invalid input")
+    
     elif user_input_for_menu_selection == 3:
         withdraw_amount = input("How much would you like to withdraw?")
-        withdraw_amount = convert_withdrawel_input_to_negative(withdraw_amount)
-        add_a_withdrawel_to_file(str(withdraw_amount) + "\n")
-        print("Your new balance is $", str(sum_of_all_transactions()))
+        if withdraw_amount.isnumeric():
+            withdraw_amount = convert_withdrawel_input_to_negative(withdraw_amount)
+            add_a_withdrawel_to_file(str(withdraw_amount) + "\n")
+            print("\n")
+            print("Your new balance is $", str(sum_of_all_transactions()))
+        else:
+            print("Invalid input")
+        
     else:
         print("\n")
         print(goodbye)
